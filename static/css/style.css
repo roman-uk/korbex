@@ -1,0 +1,195 @@
+
+body{
+    font-family: 'Raleway', sans-serif;
+    background-image: url(http://bgfons.com/upload/asphalt_texture3647.jpg);
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.container {
+    width: 800px;
+    min-height: 800px;
+    border: 2px grey solid ;
+    margin: 0 auto;
+    margin-top: 50px;
+    /*background:#fff;*/
+}
+
+.header {
+    display: flex;
+    height: 150px;
+}
+
+.title-block {
+    background-size: cover;
+    display: flex;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.userpic {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 30%;
+}
+.userpic h1{
+    position: absolute;
+    top: 0px;
+    left: 10%;
+    color: #DF0101;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.nav ul {
+
+    display: flex;
+    background: rgb(230, 230, 230);
+    margin: 5px 0;
+    /*border-radius: 10%;*/
+}
+
+.nav li {
+    width: 20%;
+}
+
+.active {
+    background-color: grey;
+    border-radius: 10%;
+}
+
+.nav li a {
+    /*border-radius: 10%;*/
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    text-decoration: none;
+    color: #404040;
+    font-weight: bold;
+    border-right: 1px solid #d1d1d1;
+    transition: background .5s ease;
+}
+
+p {
+    line-height: 20px;
+}
+
+.nav li a:hover {
+    background: rgb(196, 196, 196);
+}
+
+.content-wrapper {
+    display: flex;  /*puts text in one row.*/
+}
+
+/* Page home */
+
+.content-home {
+    background: #81BEF7;
+    width: 80%;
+    padding: 20px;
+    border-radius: 2%;
+}
+
+.sidebar {
+    background: #81BEF7;
+    width: 20%;
+    padding: 10px;
+    border-radius: 7px;
+    margin-left: 2px;
+}
+
+.sidebar li {
+    padding: 10px 0;
+    transition: transform .5s ease;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    transform: translateX(10px);
+}
+
+/* Page store */
+
+.sort-bar {
+  border-bottom: 1px dotted #dfe9f2;
+  font: 0.9em Helvetica, Arial, Tahoma;
+  margin: 20px 30px;
+  padding: 10px 0;
+}
+
+.sort-bar a {
+  padding: 0 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.sort-bar a:hover, .sort-bar a:focus, .sort-bar a:active {
+  color: #61380B;
+}
+
+.content-store {
+    background: #81BEF7;
+    width: 100%;
+    padding: 2px;
+    border-radius: 2%;
+    opacity: 0.9;
+}
+
+.thumb-list {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.thumb-list li {
+    display: grid;
+    height: 5em;
+    grid-template-columns: 15% 20% 55% 10%;
+    border: 1px #4833FE solid;
+}
+
+.thumb-image {
+    overflow: hidden;
+}
+
+.thumb-image:hover {
+    overflow: visible;
+    z-index: 1;
+}
+
+.thumb-list li h4 {
+    overflow: hidden;
+    margin: 5px;
+}
+
+.thumb-list li p {
+    overflow: hidden;
+    margin: 5px;
+}
+.price {
+    overflow: hidden;
+    margin: 5px;
+}
+
+/* Page service */
+
+.content-service {
+    background: #81BEF7;
+    width: 100%;
+    padding: 20px;
+    border-radius: 2%;
+}
+
+

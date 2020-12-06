@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KorbeX</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-block">
+                <img src="{% static 'images/stones.jpg' %}" width="100%" height="100%">
+            </div>
+            <div class="userpic">
+                <img src="{% static 'images/service.jpeg' %}"  width="100%" height="100%">
+                <h1>K O R B E X</h1>
+
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="{%block home%}{%endblock%}"><a href="{% url 'home_p' %}">Glowna</a></li>
+                <li class="{%block store%}{%endblock%}"><a href="{% url 'store_p' %}">Sklep</a></li>
+                <li class="{%block service%}{%endblock%}"><a href="{% url 'service_p' %}">Serwis</a></li>
+                <li class="{%block blog%}{%endblock%}"><a href="{% url 'gallery_p' %}">BLOG</a></li>
+                <li class="{%block contact%}{%endblock%}"><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+        <div class="content-wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
