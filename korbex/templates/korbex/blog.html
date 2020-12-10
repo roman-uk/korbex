@@ -1,4 +1,5 @@
-{% extends './index.html' %}
+{% extends "./index.html" %}
+{% load static %}
 
 {%block blog%}
     active
@@ -7,6 +8,20 @@
 {% block content %}
 <div class="content">
     <h3>BLOG</h3>
+    <div style="background-color: white">
+    	<h2><a href="#">Nullam sed felis ac risus interdum euismod.</a></h2>
+        <p class="meta">On April 26 | By: <a href="#">$hekh@r d-Ziner</a></p>
+        <img src="{% static 'images/bicycle.jpeg' %}">
+        <p> Aenean laoreet mollis tellus, at elementum nulla <strong>placerat sit amet. </strong> In hac habitasse platea dictumst. Vestibulum luctus congue magna a scelerisque.</p>
+        <p><a href="page.html" class="more-link">Reading continued <span class="icon">:</span></a></p>
+    </div>
+    <div style="background-color: white">
+    	<h2><a href="#">Nullam sed felis ac risus interdum euismod.</a></h2>
+        <p class="meta">On April 26 | By: <a href="#">$hekh@r d-Ziner</a></p>
+        <img src="{% static 'images/forest.jpeg' %}">
+        <p> Aenean laoreet mollis tellus, at elementum nulla <strong>placerat sit amet. </strong> In hac habitasse platea dictumst. Vestibulum luctus congue magna a scelerisque.</p>
+        <p><a href="page.html" class="more-link">Reading continued <span class="icon">:</span></a></p>
+    </div>
 
 </div>
 {% endblock %}

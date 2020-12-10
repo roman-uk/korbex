@@ -1,6 +1,6 @@
 
 body{
-    font-family: 'Raleway', sans-serif;
+    font-family: Raleway, sans-serif;
     background-image: url(http://bgfons.com/upload/asphalt_texture3647.jpg);
 }
 
@@ -93,8 +93,9 @@ p {
 
 /* Page home */
 
-.content-home {
-    background: #81BEF7;
+    .content-home {
+    background: url("../images/rm21.jpg");
+    background-size: cover;
     width: 80%;
     padding: 20px;
     border-radius: 2%;
@@ -186,10 +187,34 @@ p {
 /* Page service */
 
 .content-service {
-    background: #81BEF7;
+    background: url("../images/aluminum_texture.jpg");
     width: 100%;
     padding: 20px;
     border-radius: 2%;
+    filter: brightness(120%);
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 2px solid grey;
+    width: 100%;
+}
+
+th, td {
+    border-top: 1px black solid;    
+    padding: 8px;
+    /*color: #25383C;*/
+    font-size: 1.1em;        
+}
+
+.col2 {    
+    color: brown;
+    width: 80%;
+    font-family: Geneva, Helvetica;
+    font-weight: bold;
+    font-size: 1.3em;
+
 }
 
 
