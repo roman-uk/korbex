@@ -91,7 +91,9 @@ p {
     display: flex;  /*puts text in one row.*/
 }
 
-/* Page home */
+/*===================
+     Page home 
+=====================*/
 
     .content-home {
     background: url("../images/rm21.jpg");
@@ -119,23 +121,25 @@ p {
     transform: translateX(10px);
 }
 
-/* Page store */
+/*===================
+     Page store
+===================== */
 
 .sort-bar {
-  border-bottom: 1px dotted #dfe9f2;
-  font: 0.9em Helvetica, Arial, Tahoma;
-  margin: 20px 30px;
-  padding: 10px 0;
+    border-bottom: 1px dotted #dfe9f2;
+    font: 0.9em Helvetica, Arial, Tahoma;
+    margin: 20px 30px;
+    padding: 10px 0;
 }
 
 .sort-bar a {
-  padding: 0 5px;
-  text-decoration: none;
-  color: black;
+    padding: 0 5px;
+    text-decoration: none;
+    color: black;
 }
 
 .sort-bar a:hover, .sort-bar a:focus, .sort-bar a:active {
-  color: #61380B;
+    color: #61380B;
 }
 
 .content-store {
@@ -184,7 +188,9 @@ p {
     margin: 5px;
 }
 
-/* Page service */
+/*=====================
+    Page service 
+ ======================*/
 
 .content-service {
     background: url("../images/aluminum_texture.jpg");
@@ -203,8 +209,7 @@ table {
 
 th, td {
     border-top: 1px black solid;    
-    padding: 8px;
-    /*color: #25383C;*/
+    padding: 8px;    
     font-size: 1.1em;        
 }
 
@@ -214,7 +219,58 @@ th, td {
     font-family: Geneva, Helvetica;
     font-weight: bold;
     font-size: 1.3em;
-
 }
 
+/*============= 
+||   BLOG    ||
+===============*/
 
+.content-blog {
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    padding: 3px;      
+}
+
+.post {         
+    border: 5px solid #E6E6E6;
+    border-radius: 2%;
+    margin-top: 10px;
+    padding: 3px;    
+} 
+
+.post h2 {
+    font-size: 1.3em;
+    margin-bottom: 7px;
+    /*font-weight: bold;*/
+    text-align: center;
+}
+.meta {
+    color: blue;
+    font-size: 0.7em;
+}
+
+.post img {
+    float: left;
+    margin: 0 10px 5px 0;        
+}
+
+/*=================
+    CONTACT
+===================*/
+
+.content-contact {
+    background-color: #E0F8F7;
+}
+
+.allcontact {
+    display: flex;
+    background-color: #CED8F6;
+}
+
+.onecontact {
+    background-color: #CEECF5;
+    margin: 5px;
+    height: 100px;
+    width: 100px;
+}

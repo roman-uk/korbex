@@ -16,7 +16,7 @@ def service(request):
     return render(request, 'korbex/service.html')
 
 
-def gallery(request):
+def blog(request):
     context = {}
     return render(request, 'korbex/blog.html')
 
