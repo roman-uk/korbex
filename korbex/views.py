@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from .models import *
 
 
 def home(request):
-    context = {}
+    homecontent = HomeContent.objects.all()
+    blogcontent = Blog.objects.all()[:5]
+    context = {"homecontent": homecontent, 'blogcontent': blogcontent}
     return render(request, 'korbex/home.html', context)
 
 
@@ -17,8 +20,9 @@ def service(request):
 
 
 def blog(request):
-    context = {}
-    return render(request, 'korbex/blog.html')
+    blogcontent = Blog.objects.all().order_by("data_add")
+    context = {'blogcontent': blogcontent}
+    return render(request, 'korbex/blog.html', context)
 
 
 def contact(request):

@@ -8,33 +8,16 @@
 {% block content %}
 <div class="content-blog">
     <h3>BLOG</h3>
-    <div class="post">    		
-    	<h2>Nullam sed felis ac risus interdum euismod.</h2>
-        <p class="meta">On April 26 | By: <a href="#">$hekh@r d-Ziner</a></p>
-        <img src="{% static 'images/bicycle.jpeg' %}">
-        <p> Aenean laoreet mollis tellus, at elementum nulla <strong>placerat sit amet. </strong> In hac habitasse platea dictumst. Vestibulum luctus congue magna a scelerisque.
-            Meaning of symbols:
-        The first two symbols in HTML color code represents the intensity of red color. 00 is the least and FF is the most intense. The third and fourth represents intensity of green and fifth and sixth represents the intensity of blue. So with combining the intensity of red, green and blue we can mix almost any color that our heart desire;)
-        Meaning of symbols:
-        The first two symbols in HTML color code represents the intensity of red color. 00 is the least and FF is the most intense. The third and fourth represents intensity of green and fifth and sixth represents the intensity of blue. So with combining the intensity of red, green and blue we can mix almost any color that our heart desire;) 
-        Meaning of symbols:
-        The first two symbols in HTML color code represents the intensity of red color. 00 is the least and FF is the most intense. The third and fourth represents intensity of green and fifth and sixth represents the intensity of blue. So with combining the intensity of red, green and blue we can mix almost any color that our heart desire;)
-        </p>
-        <p><a href="page.html" class="more-link">Reading continued <span class="icon">:</span></a></p>
-    </div>
+
+    {% for item in blogcontent %}
     <div class="post">
-    	<h2>Nullam sed felis ac risus interdum euismod.</h2>
-        <p class="meta">On April 26 | By: <a href="#">$hekh@r d-Ziner</a></p>
-        <img src="{% static 'images/forest.jpeg' %}">
-        <p> Aenean laoreet mollis tellus, at elementum nulla <strong>placerat sit amet. </strong> In hac habitasse platea dictumst. Vestibulum luctus congue magna a scelerisque.
-        Choosing to start a relationship with the girl you've got your heart set on is a big decision, but also one that opens the door to many exciting possibilities. Because of the emotional investment involved with any serious relationship, it goes without saying that you'll want to choose your girlfriend carefully. Luckily, with a little help from wikiHow, you'll be able to find a winner in no time! See Step 1 below to get started. 
-        Choose a girl you like to be around - above all. This may seem like a no-brainer, but it's something all too many forget! Though almost every relationship will have difficult patches, relationships should bring happiness to both partners (most of the time). Your girlfriend should be someone that you know can bring out positive emotions in you. If the girl you're considering starting a relationship with makes you wish you were somewhere else or causes you to become tense or unhappy often, you'll want to seriously reconsider. Ask yourself the following questions:[1]
-        Can I be myself around this person, or do I have to put up a "nice" front?
-        Is this someone I naturally enjoy talking to?
-        Do we seem to enjoy the time we spend together?
-        </p>
+    	<h2>{{item.title}}</h2>
+        <p class="meta">{{item.data_add}}| By: <a href="#">{{item.author}}</a></p>
+        <img src="{{item.imageUrl}}">
+        <p>{{item.content}}</p>
         <h2><a href="#">. . .</a></h2>
     </div>
+    {% endfor %}
 
 </div>
 {% endblock %}

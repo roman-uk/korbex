@@ -8,44 +8,20 @@
 {% block content %}
 
 <div class="content-home">
-    <h3>Profesjonalny serwis rowerów</h3>
-    <img src="{% static 'images/serv.jpeg' %}">
-    <p>Pasja do sportu sprawia, że czynności serwisowe w naszej firmie wykonujemy niezwykle starannie,
-        a warsztat wyposażony jest w najnowsze narzędzia. Staramy się również brać aktywny udział w różnych
-        imprezach sportowych na terenie Gdańska. Jako firma stale poszerzamy naszą ofertę, aby sprostać
-        wymaganiom każdego Klienta. Świadczymy również usługi w zakresie renowacji roweru oraz złożenia
-        roweru pod klienta.
-            <strong><h4>Dlaczego warto serwisować rower u nas?</h4></strong>
-            Do każdego klienta podchodzimy indywidualnie. U nas nie ma przeglądów robionych na szybko,
-        rower jest kompleksowo sprawdzany, z szczególnym uwzględnieniem najważniejszych komponentów, zwłaszcza
-        tych odpowiedzialnych za bezpieczeństwo jazdy.
-        Nie popadamy w rutynę i nie stawiamy na natychmiastowy zysk kosztem klienta. Jeśli trzeba wymienić części
-        w rowerze, proponujemy najlepsze rozwiązanie dla klienta – do jazdy na zakupy nie potrzebujesz przerzutki
-        za 150 zł, ale do treningu po lesie nie zaproponujemy Ci opony za 25 zł, bo "taka nam została".
-        Mamy dostęp do bardzo dużego spektrum części i akcesoriów w atrakcyjnych cenach.
-        Udzielamy gwarancji zadowolenia na nasze usługi. Jeśli praca serwisowanego u nas roweru nie będzie
-        Ci odpowiadać, poprawimy bezpłatnie, aż do uzyskania przez klienta pełnej satysfakcji.
-        Rowery zakupione u nas przechodzą po 2 miesiącach BEZPŁATNY serwis w celu sprawdzenia poprawności działania
-        wszystkich podzespołów. Serwis wbijany jest do karty gwarancyjnej, stanowiąc podstawę do dalszych
-        napraw gwarancyjnych.
-        A ponad wszystko – każdą nasza naprawę czy sprzedaż firmujemy własną twarzą i dobrym imieniem.
-        Sprzedajemy to, czego sami używamy od kilku lat. Na podstawie doświadczenia w naprawie i użytkowania
-        rowerów, często w ekstremalnych warunkach, dokładamy wszelkich starań żeby Wasze rowery działały
-        tak, jak należy.
-    </p>
+    {% for hc in homecontent %}
+    <h3>{{hc.title}}</h3>
+    <img src="{{ hc.imageUrl }}">
+    <p>{{hc.content}}</p>
+    {% endfor %}
 </div>
     <div class="sidebar">
         <h3>ARTYKULY</h3>
+
+        {% for artykul in blogcontent %}
         <ul>
-            <li>artykul serwisu 1</li>
-            <li>artykul serwisu 2</li>
-            <li>artykul serwisu 3</li>
-            <li>artykul serwisu 4</li>
-            <li>artykul serwisu 5</li>
-            <li>artykul serwisu 6</li>
-            <li>artykul serwisu 7</li>
-            <li>artykul serwisu 7</li>
+            <li><a href="#">{{artykul.title}}</a></li>
         </ul>
+        {% endfor %}
     </div>
 
 {% endblock %}
