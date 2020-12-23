@@ -171,14 +171,25 @@ p {
     border: 1px #4833FE solid;
 }
 
-.thumb-image {
+/*.thumb-image {
     overflow: hidden;
+}*/
+
+.thumb-list li img {
+    height: 78px;
+    padding-bottom: 2px;
+    z-index: 0;
 }
 
-.thumb-image:hover {
-    overflow: visible;
+.thumb-list li img:hover {
+    height: 250px;
     z-index: 1;
 }
+
+/*.thumb-image:hover {
+    overflow: visible;
+    z-index: 1;
+}*/
 
 .thumb-list li h4 {
     overflow: hidden;

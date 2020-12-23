@@ -8,6 +8,7 @@
 {% block content %}
 
 <div class="content-home">
+
     {% for hc in homecontent %}
     <h3>{{hc.title}}</h3>
     <img src="{{ hc.imageUrl }}">
@@ -19,7 +20,7 @@
 
         {% for artykul in blogcontent %}
         <ul>
-            <li><a href="#">{{artykul.title}}</a></li>
+            <li><a href="{% url 'blog_p' %}?id={{artykul.id}}">{{artykul.title}}</a></li>
         </ul>
         {% endfor %}
     </div>
