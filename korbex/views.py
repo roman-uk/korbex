@@ -18,8 +18,10 @@ def store(request):
 
 # Serwis
 def service(request):
-    context = {}
-    return render(request, 'korbex/service.html')
+    repairs = Service.objects.all().order_by('type_repair')
+    type_repairs = TypeRepair.objects.all()
+    context = {'repairs': repairs, 'type_repairs': type_repairs}
+    return render(request, 'korbex/service.html', context)
 
 
 # Blog
