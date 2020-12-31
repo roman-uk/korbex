@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .forms import *
 
 
 # Start
@@ -13,7 +14,12 @@ def home(request):
 # Sklep
 def store(request):
     context = {}
-    return render(request, 'korbex/store.html')
+    context['sort_form'] = SortedForm()
+    context['prices_form'] = PriceMinMax()
+    context['search_form'] = SearchForm()
+    context['products'] = StoreProducts.objects.all()
+    # sort_name = request.GET.get('name', '')
+    return render(request, 'korbex/store.html', context)
 
 
 # Serwis

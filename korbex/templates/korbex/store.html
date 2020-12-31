@@ -9,94 +9,46 @@
 <div class="content-store">
     <h3>SKLEP</h3>
     <div class="sort-bar">
-           Filter: <a href="">Private firms</a> | <a href="">Government houses</a> |
-                    <a href="">Corporate</a> | <a href="">Industrials</a>
+        <form action="#" method="GET">
+            {% csrf_token %}
+           Filter:
+        {{sort_form}}
+            | Cena  od{{prices_form.price_min}} do{{prices_form.price_min}}
+            |           {{search_form}}
+            <input class="zastosuj" type="submit" value="Zastosuj">
+        </form>
+
     </div>
 <ul class="thumb-list">
+    {% for prod in products %}
        <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 1</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
+           <div><img src="{{ prod.imageUrl }}"></div>
+            <h4>{{prod.name_product}}</h4>
+            <p>{{prod.incomplete_description}}
+                <input type="checkbox" id="{{prod.id}}" class="reference"/>
+                <span class="story">{{prod.continue_description}}</span>
+                <label style="font-size: 20px" for="{{prod.id}}">. . .</label>
+
+            </p>
+           <div class="price">{{ prod.price }} zl</div>
        </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 1</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 2</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 3</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 4</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 5</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 6</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 1</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 1</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 2</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 3</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 4</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-       <li>
-           <div><img src="{% static 'images/hotbike.jpg' %}"></div>
-            <h4>Project name 5</h4>
-            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>
-           <div class="price">233 zl</div>
-       </li>
-<!--       <li>-->
-<!--           <div class="thumb-image"><img src="http://lorempixel.com/215/120/city/" alt="Lorem ipsum dolor..."></div>-->
-<!--            <h4>Project name 6</h4>-->
-<!--            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque</p>-->
+    {% endfor %}
+
+<!--        <li>-->
+<!--           <div><img src="{% static 'images/hotbike.jpg' %}"></div>-->
+<!--            <h4>Project name 2</h4>-->
+<!--            <p>Cursus pellentesque mauris vitae ultricies. Donec lacinia nunc in nisl hendrerit scelerisque-->
+<!--            <input type="checkbox" id="hd-1" class="reference"/>-->
+<!--            <label for="hd-1" >Справка</label>-->
+<!--            <span class="story">-->
+<!--                Бла-бла-бла-бла-бла-бла-Бла-бла-бла-бла-бла-бла-->
+<!--                Бла-бла-бла-бла-бла-бла-Бла-бла-бла-бла-бла-бла-->
+<!--            </span>-->
+<!--            </p>-->
 <!--           <div class="price">233 zl</div>-->
 <!--       </li>-->
+
+
 </ul>
 
 </div>

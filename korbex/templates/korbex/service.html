@@ -14,6 +14,7 @@
 {% for type_r in type_repairs %}
         <tr>
             <th class="col2">{{type_r}}</th>
+            <th></th>
         </tr>
         {% for repair in repairs %}
             {% if repair.type_repair == type_r %}

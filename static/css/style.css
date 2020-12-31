@@ -144,6 +144,22 @@ p {
     color: black;
 }
 
+.price {
+    width: 70px;
+}
+
+.search {
+    width: 140px;
+    margin-left: 10px;
+}
+
+.zastosuj {
+    width: 100px;
+    height: 34px;
+    margin-left: 10px;
+    border-radius:10%;
+    border: 2px solid grey;
+}
 .sort-bar a:hover, .sort-bar a:focus, .sort-bar a:active {
     color: #61380B;
 }
@@ -166,21 +182,25 @@ p {
 
 .thumb-list li {
     display: grid;
-    height: 5em;
+    /*height: 5em;*/
     grid-template-columns: 15% 20% 55% 10%;
     border: 1px #4833FE solid;
 }
 
 .thumb-list li img {
     height: 78px;
-    padding-bottom: 2px;
+    width: 118px;
+    padding-top: 2px;
+
+    padding-left: 2px;
+    border-radius: 3%;
     z-index: 0;
 }
 
 .thumb-list li img:hover {
     position: absolute;
     height: 250px;
-
+    width: 370px;
 }
 
 .thumb-list li h4 {
@@ -196,6 +216,31 @@ p {
     overflow: hidden;
     margin: 5px;
 }
+/* hiding part of the text with the product description */
+.reference {
+    display: none;
+}
+
+.reference ~ .story {
+    display: none;
+}
+
+.reference ~ label {
+    font-size: 16px;
+    padding: 0;
+    color: purple;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.reference:checked ~ .story {
+    display: block;
+}
+
+.hi{
+    display: none;
+}
+
 
 /*=====================
    SERVICE
@@ -214,6 +259,7 @@ table {
     border-collapse: collapse;
     border: 2px solid grey;
     width: 100%;
+    border: 2px solid black;
 }
 
 th, td {
@@ -223,7 +269,7 @@ th, td {
     font-size: 1.1em;        
 }
 
-.col2 {    
+.col2 {
     color: brown;
     font-family: Geneva, Helvetica;
     font-weight: bold;
