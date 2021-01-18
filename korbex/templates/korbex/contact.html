@@ -9,38 +9,33 @@
 <div class="content-contact">
     <h3>KONTAKT</h3>
     <div class="allcontact">
+		{% for cont in contact_data %}
   	   <div class="onecontact">
   	   			ADRES:
   	   		<br>-----------
-  	   		<br>woj. pomorskie
-			80-404 Gdańsk, Dzielna 33
+  	   		<br>{{cont.address}}
 	   </div>
  	   <div class="onecontact">TELEFON:
  	   		<br>-----------------
- 	   		<br>+48 512 207 068
+ 	   		<br>{{cont.telephone}}
  	   	</div>
  	   <div class="facecontact">
-		   <a href="#"><img src="{% static 'images/facebook.jpeg' %}"></a>
+		   <a href="{{cont.facebook}}"><img src="{% static 'images/facebook.jpeg' %}"></a>
  	   </div>
-  	</div>   
-  	   <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2323.713862522614!2d18.62271431587765!3d54.379704980208565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd74a28c91d1df%3A0xb7843412ea01d40!2sDzielna%2033%2C%2080-404%20Gda%C5%84sk%2C%20Poland!5e0!3m2!1sen!2sua!4v1607779704127!5m2!1sen!2sua" width="600" height="450"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+		{% endfor %}
+  	</div>  <!--Google maps in page -->
+  	   <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2323.713862522614!2d18.6227143158776
+  	   5!3d54.379704980208565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd74a28c91d1df%3A0xb7843412ea01d
+  	   40!2sDzielna%2033%2C%2080-404%20Gda%C5%84sk%2C%20Poland!5e0!3m2!1sen!2sua!4v1607779704127!5m2!1sen!2sua"
+					width="600" height="450"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
   	   <div class="worktime">  	   		
  	   		<ul>
+
  	   			<li><a>Otwarto:</a></li>
- 	   			<li>ponidziałek</li>
- 	   			<li>8:00 - 18:00</li>
- 	   			<li>wtorek</li>
- 	   			<li>8:00 - 18:00</li>
- 	   			<li>śrioda</li>
- 	   			<li>8:00 - 18:00</li>
- 	   			<li>czwartek</li>
- 	   			<li>8:00-18:00</li>
- 	   			<li>piątek</li>
- 	   			<li>8:00-18:00</li>
- 	   			<li>sobota</li>
- 	   			<li>10:00-15:00</li>
- 	   			<li><a>Zamknięto:</a></li>
- 	   			<li>niedzila</li>
+				{%for work in working_hours%}
+ 	   			<li class="day">{{work.working_day}}</li>
+ 	   			<li>{{work.working_hours}}</li>
+				{% endfor %}
  	   		</ul>	
  	   </div>
   	  

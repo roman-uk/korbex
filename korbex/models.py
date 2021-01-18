@@ -1,7 +1,7 @@
 from django.db import models
-from datetime import date
 
 
+# >>>>>>>>> Models from Home Page <<<<<<<<<<<
 class HomeContent(models.Model):
     title = models.CharField(max_length=50, unique=True)
     content = models.TextField(help_text="input your text")
@@ -40,6 +40,24 @@ class StoreProducts(models.Model):
         return im
 
 
+#  >>>>>>>>>* Models from Service page *<<<<<<<<<<<
+#     Model for specifying the kind of repair
+class TypeRepair(models.Model):
+    type_repair = models.CharField(max_length=50, unique=True, help_text="Typ naprawy(kierownica, hamulca itp)")
+
+    def __str__(self):
+        return self.type_repair
+
+
+class Service(models.Model):
+    name_repair = models.CharField(max_length=50, help_text="Nazwa naprawy(wymiana kierownicy)", unique=True)
+    type_repair = models.ForeignKey(TypeRepair, on_delete=models.SET_NULL, null=True)
+    price = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name_repair
+
+
 # >>>>>>> Models from Blog page <<<<<<<<
 class Blog(models.Model):
     title = models.CharField(max_length=50, unique=True)
@@ -60,23 +78,16 @@ class Blog(models.Model):
         return wg
 
 
-#   ***Models from Service page***
-
-# Model for specifying the kind of repair
-class TypeRepair(models.Model):
-    type_repair = models.CharField(max_length=50, help_text="Typ naprawy(kierownica, hamulca itp)")
-
-    def __str__(self):
-        return self.type_repair
+#   ***Models from Contact page***
+class ContactData(models.Model):
+    address = models.TextField(max_length=200, blank=True)
+    telephone = models.TextField(max_length=200, blank=True)
+    facebook = models.URLField(verbose_name='facebook', blank=True)
 
 
-class Service(models.Model):
-    name_repair = models.CharField(max_length=50, help_text="Nazwa naprawy(wymiana kierownicy)", unique=True)
-    type_repair = models.ForeignKey(TypeRepair, on_delete=models.SET_DEFAULT, default='other')
-    price = models.CharField(max_length=20)
+class WorkingHours(models.Model):
+    working_day = models.CharField(max_length=20)
+    working_hours = models.CharField(max_length=25)
 
     def __str__(self):
-        return self.name_repair
-
-
-
+        return self.working_day

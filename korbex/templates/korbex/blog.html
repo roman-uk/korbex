@@ -26,7 +26,7 @@
             {% if item.id != home_blog.id %}
                 <div class="post">
                     <h2>{{item.title}}</h2>
-                    <p class="meta">{{item.data_add}}| By: <a href="#">{{item.author}}</a></p>
+                    <p class="meta">{{item.data_add}}| By: {{item.author}}</p>
                     <img src="{{item.imageUrl}}">
                     <p>{{item.content}}</p>
                     <h2><a href="#">. . .</a></h2>

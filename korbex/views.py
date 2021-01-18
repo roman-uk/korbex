@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
@@ -18,16 +18,39 @@ def store(request):
     context['prices_form'] = PriceMinMax()
     context['search_form'] = SearchForm()
     context['products'] = StoreProducts.objects.all()
-    # sort_name = request.GET.get('name', '')
     return render(request, 'korbex/store.html', context)
 
 
 # Serwis
 def service(request):
-    repairs = Service.objects.all().order_by('type_repair')
+    error = ''
     type_repairs = TypeRepair.objects.all()
-    context = {'repairs': repairs, 'type_repairs': type_repairs}
+    repairs = Service.objects.all().order_by('type_repair')
+    type_repairs_form = TypeRepairForm()
+    repairs_form = ServiceForm()
+    context = {'error': error, 'repairs': repairs, 'type_repairs': type_repairs,
+               'type_repairs_form': type_repairs_form, 'repairsform': repairs_form}
     return render(request, 'korbex/service.html', context)
+
+
+def new_type_repair(request):
+    if request.method == "POST":
+        form = TypeRepairForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('service_p')
+        else:
+            error = 'Nieprawidłowo wypełnione'
+
+
+def new_repair(request):
+    if request.method == "POST":
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('service_p')
+        else:
+            error = 'Nieprawidłowo wypełnione'
 
 
 # Blog
@@ -42,7 +65,12 @@ def blog(request):
     return render(request, 'korbex/blog.html', context)
 
 
-# Kontact
+# Kontakt
 def contact(request):
     context = {}
-    return render(request, 'korbex/contact.html')
+    context['contact_data'] = ContactData.objects.all()
+
+    context['working_hours'] = WorkingHours.objects.all()
+
+    return render(request, 'korbex/contact.html', context)
+
