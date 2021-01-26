@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.http import HttpResponseNotFound
 
 
 # Start
@@ -21,10 +22,10 @@ def store(request):
     return render(request, 'korbex/store.html', context)
 
 
-# Serwis
+# --------- SERWIS -----------
 def service(request):
     error = ''
-    type_repairs = TypeRepair.objects.all()
+    type_repairs = TypeRepair.objects.all().order_by('type_repair')
     repairs = Service.objects.all().order_by('type_repair')
     type_repairs_form = TypeRepairForm()
     repairs_form = ServiceForm()
@@ -43,6 +44,30 @@ def new_type_repair(request):
             error = 'Nieprawidłowo wypełnione'
 
 
+def edit_type(request):
+    ed = request.GET.get('id', '')
+    type = TypeRepair.objects.get(id=ed)
+    try:
+        if request.method == 'POST':
+            type.type_repair = request.POST.get('type')
+            type.save()
+            return redirect('service_p')
+    except:
+        return HttpResponseNotFound('<h1> Zapys ne znajdeno </h1>')
+
+
+def delete_type(request):
+    try:
+        dt = request.GET.get('id', '')
+        type = TypeRepair.objects.get(id=dt)
+        type.delete()
+        return redirect('service_p')
+    except:
+        error = 'Niemożliwe usunięcia tego wpisu. Najpierw usuń wszystkie naprawy,<br> ' \
+                'które mają typ naprawy <strong>"{}"</strong> lub ustaw dla nich inny rodzaj naprawy'.format(type)
+        return HttpResponseNotFound(error)
+
+
 def new_repair(request):
     if request.method == "POST":
         form = ServiceForm(request.POST)
@@ -53,7 +78,32 @@ def new_repair(request):
             error = 'Nieprawidłowo wypełnione'
 
 
-# Blog
+def edit_repair(request):
+    er = request.GET.get('id', '')
+    service = Service.objects.get(id=er)
+    try:
+        if request.method == "POST":
+            type = request.POST.get('type')
+            service.type_repair = TypeRepair.objects.get(type_repair=type)
+            service.name_repair = request.POST.get('repair')
+            service.price = request.POST.get('price')
+            service.save()
+            return redirect('service_p')
+    except:
+        return HttpResponseNotFound("<h1> Zapys ne znajdeno </h1>")
+
+
+def delete_repair(request):
+    try:
+        dr = request.GET.get('id', '')
+        repair = Service.objects.get(id=dr)
+        repair.delete()
+        return redirect('service_p')
+    except:
+        return HttpResponseNotFound("<h1> Zapys ne znajdeno </h1>")
+
+
+# _______ BLOG________
 def blog(request):
     blog_id = request.GET.get("id", '')
     if blog_id != '':
@@ -73,4 +123,3 @@ def contact(request):
     context['working_hours'] = WorkingHours.objects.all()
 
     return render(request, 'korbex/contact.html', context)
-

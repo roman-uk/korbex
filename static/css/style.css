@@ -21,7 +21,6 @@ h3 {
 .container {
     width: 800px;
     min-height: 800px;
-
     margin: 0 auto;
     margin-top: 50px;
     border-radius: 10px;
@@ -262,7 +261,10 @@ p {
    SERVICE
  ======================*/
 
-/* The POP-UP MENU (drop down menu for chose new position or new type repair)*/
+ /*        Adding New Entries to the Page       */
+
+
+    /* The POP-UP MENU (drop down menu for chose new position or new type repair)*/
 .dropbtn {
     color: blue;
     padding: 16px;
@@ -318,7 +320,7 @@ p {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
+    /* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -384,8 +386,46 @@ p {
   cursor: pointer;
 }
 
+/*  editing records on a page  */
 
-/*  CONTENT */
+.edit {
+    display: none;
+    background-color: #BEC1C4;
+    padding: 10px;
+    position: absolute;
+    left: 100px;
+    border: 5px solid #79B1EC;
+    border-radius: 10px;
+    margin-top: -200px;
+    opacity: 1;
+    z-index: 8;
+}
+
+.edit input {
+    font-size: 16px;
+    border: 1px solid grey
+    padding: 5px;
+}
+
+.edit button {
+    font-size: 16px;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.edit table, td {
+    margin: 20px;
+    border: 0;
+
+}
+.edit td {
+    margin: 10px;
+    border: 0;
+
+}
+
+            /*  CONTENT */
+
 .content-service {
     background: url("../images/aluminum_texture.jpg");
     width: 100%;
@@ -420,6 +460,7 @@ th, td {
     font-size: 20px;
     color: blue;
     text-align: right;
+    cursor: pointer;
 }
 
 /*============= 

@@ -10,9 +10,10 @@
 <div class="content-service">
 
 
-<!-----------------The pop-up menu----------------------->
+
     <div style="display: flex">
         <h3>SERWIS </h3>
+<!-----------------The pop-up menu----------------------->
         <div class="dropdown">
             <span class="dropbtn"> + NEW </span>
                 <div class="dropdown-content">
@@ -67,26 +68,64 @@
     </div>
 
 <!---------------Content Service Page------------------------->
+
     <table>
+{% for type_r in type_repairs %}
+    <tr>
+        <th class="col2">{{type_r}}</th>
+        <th></th>
+        <th class="three-dots" onclick="ipsum{{type_r.id}}.style.display='block'">&#10247;</th>
 
-    {% for type_r in type_repairs %}
-        <tr>
-            <th class="col2">{{type_r}}</th>
-            <th></th>
-            <th class="three-dots">&#10247;</th>
-        </tr>
-        {% for repair in repairs %}
-            {% if repair.type_repair == type_r %}
-                <tr>
-                    <td>{{repair.name_repair}}</td>
-                    <td>{{repair.price}}</td>
-                    <td class="three-dots">&#10247;</td>
-                </tr>
-            {% endif %}
-        {% endfor %}
+        <th id="ipsum{{type_r.id}}" class="edit">
+            <form method="post" action="{% url 'edit_type' %}?id={{type_r.id}}">
+                {% csrf_token %}
+                <label>Redagować:</label> <input type="text" name="type" value="{{type_r}}"/><br>
+                <input type="submit" value="Zapisz Zmiany">
+                <button type="reset" onclick="ipsum{{type_r.id}}.style.display='none'">Zrezygnować</button><br>
+            </form>
+            <p style="margin: 20px 150px 0 0"><a href="{% url 'delete_type' %}?id={{type_r.id}}">Usuń całkowicie ten wpis</a></p>
+        </th>
 
+    </tr>
+    {% for repair in repairs %}
+        {% if repair.type_repair == type_r %}
+            <tr>
+                <td>{{repair.name_repair}}</td>
+                <td>{{repair.price}}</td>
+                <td class="three-dots" onclick="lorem{{repair.id}}.style.display='block'">&#10247;</td>
+                <td id='lorem{{repair.id}}' class="edit">
+                        <form method="post" action="{% url 'edit_repair' %}?id={{repair.id}}">
+                            {% csrf_token %}
+                            <table>
+                            <tr>
+                                <td>Typ naprawy</td>
+                                <td>
+                                <select  name="type">
+                                    <option selected>{{repair.type_repair}}</option>
+                                    {% for t in type_repairs %}
+                                        {% if t != repair.type_repair %}
+                                            <option>{{t.type_repair}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                </td>
+                            </tr>
+                            <tr>
+                            <td>Nazwa naprawy</td><td><input type="text" name="repair" value="{{repair.name_repair}}"/></td>
+                            </tr>
+                            <tr>
+                            <td>Cena</td><td><input type="text" name="price" value="{{repair.price}}"/></td>
+                            </tr>
+                            </table>
+                            <button type="submit" value="Zapisz zmiany">Zapisz zmiany</button>
+                            <button type="reset" onclick="lorem{{repair.id}}.style.display='none'">Zrezygnować</button>
+                        </form>
+                        <p style="margin: 20px 0 0 50px"><a href="{% url 'delete_repair' %}?id={{repair.id}}">Usuń całkowicie ten wpis</a></p>
+                </td>
+            </tr>
+        {% endif %}
     {% endfor %}
-
+{% endfor %}
     </table>
 
 </div>

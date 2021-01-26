@@ -51,7 +51,7 @@ class TypeRepair(models.Model):
 
 class Service(models.Model):
     name_repair = models.CharField(max_length=50, help_text="Nazwa naprawy(wymiana kierownicy)", unique=True)
-    type_repair = models.ForeignKey(TypeRepair, on_delete=models.SET_NULL, null=True)
+    type_repair = models.ForeignKey(TypeRepair, on_delete=models.PROTECT)
     price = models.CharField(max_length=20)
 
     def __str__(self):

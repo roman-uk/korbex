@@ -8,7 +8,9 @@
 {% block content %}
 
 <div class="content-home">
-
+{{service.type_repair}}<br>
+{{service.name_repair}}<br>
+{{service.price}}
     {% for hc in homecontent %}
     <h3>{{hc.title}}</h3>
     <img src="{{ hc.imageUrl }}">
