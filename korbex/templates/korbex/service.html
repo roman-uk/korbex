@@ -13,7 +13,7 @@
 
     <div style="display: flex">
         <h3>SERWIS </h3>
-<!-----------------The pop-up menu----------------------->
+<!-----------------The pop-up menu for: new type repair and new repair----------------------->
         <div class="dropdown">
             <span class="dropbtn"> + NEW </span>
                 <div class="dropdown-content">
@@ -33,7 +33,6 @@
               <p>{{type_repairs_form.type_repair}}</p>
                 {{error}}
               <input type="submit"  value="ZAPISZ">
-
             </div>
           </form>
       </div>
@@ -60,22 +59,26 @@
                           <td> {{repairsform.price}} </td>
                       </tr>
                   </table>
-
                      <input type="submit" value="ZAHOWAJ">
                     {{error}}
                 </form>
             </div>
     </div>
 
-<!---------------Content Service Page------------------------->
+
+<!---------------CONTENT SERVICE PAGE------------------------->
 
     <table>
+        <!--        Repair type in the table        -->
 {% for type_r in type_repairs %}
     <tr>
-        <th class="col2">{{type_r}}</th>
+        <th class="col2">{{type_r}}</th>  <!--the field for type repair(rodzaj naprawy) -->
         <th></th>
+
+        <!--three dots to start updating the repair type -->
         <th class="three-dots" onclick="ipsum{{type_r.id}}.style.display='block'">&#10247;</th>
 
+        <!--The hidden field that includes a window to update the type repair-->
         <th id="ipsum{{type_r.id}}" class="edit">
             <form method="post" action="{% url 'edit_type' %}?id={{type_r.id}}">
                 {% csrf_token %}
@@ -85,14 +88,18 @@
             </form>
             <p style="margin: 20px 150px 0 0"><a href="{% url 'delete_type' %}?id={{type_r.id}}">Usuń całkowicie ten wpis</a></p>
         </th>
-
     </tr>
+        <!--          Repair in the table         -->
     {% for repair in repairs %}
         {% if repair.type_repair == type_r %}
             <tr>
-                <td>{{repair.name_repair}}</td>
-                <td>{{repair.price}}</td>
+                <td>{{repair.name_repair}}</td><!--the field for name repair(nazwa naprawy) -->
+                <td>{{repair.price}}</td>       <!--the field for repair price (cena naprawy) -->
+
+                <!--three dots to start updating the repair -->
                 <td class="three-dots" onclick="lorem{{repair.id}}.style.display='block'">&#10247;</td>
+
+                <!--The hidden field that includes a window to update the repair-->
                 <td id='lorem{{repair.id}}' class="edit">
                         <form method="post" action="{% url 'edit_repair' %}?id={{repair.id}}">
                             {% csrf_token %}

@@ -2,14 +2,35 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.http import HttpResponseNotFound
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 
 # Start
 def home(request):
-    homecontent = HomeContent.objects.all()
+    homecontent = HomeContent.objects.all().order_by('-data_add')
     blogcontent = Blog.objects.all().order_by("data_add")[:5]
     context = {"homecontent": homecontent, 'blogcontent': blogcontent}
     return render(request, 'korbex/home.html', context)
+
+
+class CreateHome(CreateView):
+    model = HomeContent
+    form_class = HomeContentForm
+    template_name = 'korbex/home_create.html'
+    success_url = '/home'
+
+
+class UpdateHome(UpdateView):
+    model = HomeContent
+    form_class = HomeContentForm
+    template_name = 'korbex/home_create.html'
+    success_url = '/home'
+
+
+def home_delete(request, pk=''):
+    article = HomeContent.objects.get(id=pk)
+    article.delete()
+    return redirect('home_p')
 
 
 # Sklep

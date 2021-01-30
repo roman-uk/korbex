@@ -8,23 +8,31 @@
 {% block content %}
 
 <div class="content-home">
-{{service.type_repair}}<br>
-{{service.name_repair}}<br>
-{{service.price}}
+    <a href="{% url 'home_create' %}"><h2>Nowy zapys</h2></a>
     {% for hc in homecontent %}
-    <h3>{{hc.title}}</h3>
+    <div>
+    <h3>{{hc.title}}
+        <div class="dropdown">
+            <span style="margin-left: 10px" class="three-dots">&#10247;</span>
+            <div class="dropdown-content drop-menu">
+                <a href="{% url 'home_update' hc.id %}">Redagować</a>
+                <a href="{% url 'home_delete' hc.id %}" onclick="return confirm('Usunąć {{hc.title}}?');">Usunąć</a>
+            </div>
+        </div>
+    </h3>
     <img src="{{ hc.imageUrl }}">
     <p>{{hc.content}}</p>
+    </div>
     {% endfor %}
 </div>
     <div class="sidebar">
         <h3>ARTYKULY</h3>
-
         {% for artykul in blogcontent %}
         <ul>
-            <li><a href="{% url 'blog_p' %}?id={{artykul.id}}">{{artykul.title}}</a></li>
+            <li><a href="{% url 'blog_p' %}#art{{artykul.id}}">{{artykul.title}}</a></li>
         </ul>
         {% endfor %}
-    </div>
+</div>
 
 {% endblock %}
+

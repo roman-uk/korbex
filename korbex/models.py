@@ -5,7 +5,7 @@ from django.db import models
 class HomeContent(models.Model):
     title = models.CharField(max_length=50, unique=True)
     content = models.TextField(help_text="input your text")
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='home_image')
     data_add = models.DateField(auto_now=True)
 
     def __str__(self):

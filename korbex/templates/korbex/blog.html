@@ -9,30 +9,17 @@
 
     <div class="content-blog">
 
-<!--        article opened by a link from the home page-->
-        {% if home_blog %}
-            <div class="post">
-                <h2>{{home_blog.title}}</h2>
-                <p class="meta">{{home_blog.data_add}}| By: <a href="#">{{home_blog.author}}</a></p>
-                <img src="{{home_blog.imageUrl}}">
-                <p>{{home_blog.content}}</p>
-                <h2><a href="#">. . .</a></h2>
-            </div>
-        {% else %}
-        {% endif %}
-
 <!--        main content of the blog page-->
         {% for item in blogcontent %}
-            {% if item.id != home_blog.id %}
-                <div class="post">
-                    <h2>{{item.title}}</h2>
-                    <p class="meta">{{item.data_add}}| By: {{item.author}}</p>
-                    <img src="{{item.imageUrl}}">
-                    <p>{{item.content}}</p>
-                    <h2><a href="#">. . .</a></h2>
-                </div>
-            {% else %}
-            {%endif%}
+
+            <div id="art{{item.id}}" class="post">
+                <h2>{{item.title}}</h2>
+                <p class="meta">{{item.data_add}}| By: {{item.author}}</p>
+                <img src="{{item.imageUrl}}">
+                <p>{{item.content}}</p>
+                <h2><a href="#">. . .</a></h2>
+            </div>
+
         {% endfor %}
     </div>
 

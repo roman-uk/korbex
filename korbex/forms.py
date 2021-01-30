@@ -8,6 +8,18 @@ class HomeContentForm(forms.ModelForm):
         model = HomeContent
         fields = ['title', 'content', 'image']
 
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'placeholder': 'Tytuł artykułu',
+                'style': 'width: 300px'
+            }),
+            'content': forms.Textarea(attrs={
+                'cols': 80, 'rows': 20,
+                'placeholder': 'Treść artykułu',
+                'style': 'font-size: 14px'
+            })
+        }
+
 
 # >>>>>>>>> STORE PAGE <<<<<<<<<<
 class StoreProductsForm(forms.ModelForm):

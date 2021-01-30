@@ -1,0 +1,17 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block content %}
+<div style="width: 100%" class="content-home">
+
+<form  method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <p>{{ form.title}}</p><br>
+    <p>{{ form.content }}</p><br>
+    <p>{{ form.image }}</p><br>
+    <input type="submit" value="Zachować" />
+</form>
+
+</div>
+
+{% endblock %}
