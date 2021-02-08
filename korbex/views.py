@@ -29,6 +29,7 @@ class UpdateHome(UpdateView):
 
 def home_delete(request, pk=''):
     article = HomeContent.objects.get(id=pk)
+    article.image.delete()
     article.delete()
     return redirect('home_p')
 
@@ -131,9 +132,30 @@ def blog(request):
         home_blog = Blog.objects.get(id=blog_id)
     else:
         home_blog = None
-    blogcontent = Blog.objects.all().order_by("data_add")
+    blogcontent = Blog.objects.all().order_by("-data_add")
     context = {'blogcontent': blogcontent, "home_blog": home_blog}
     return render(request, 'korbex/blog.html', context)
+
+
+class CreateBlog(CreateView):
+    model = Blog
+    form_class = BlogForm
+    template_name = 'korbex/blog-create.html'
+    success_url = '/blog'
+
+
+class UpdateBlog(UpdateView):
+    model = Blog
+    form_class = BlogForm
+    template_name = 'korbex/blog-create.html'
+    success_url = '/blog'
+
+
+def blog_delete(request, pk=''):
+    art = Blog.objects.get(id=pk)
+    art.image.delete()  # or:  pip install django-cleanup / INSTALLED_APPS = ('django_cleanup',)
+    art.delete()
+    return redirect('blog_p')
 
 
 # Kontakt

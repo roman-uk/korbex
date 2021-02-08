@@ -285,7 +285,7 @@ p {
     visibility: hidden;
     position: absolute;
     background-color: #CECEF6;
-    min-width: 160px;
+    min-width: 130px;
     left: 20px;
     top: 18px;
     border-radius: 5%;
@@ -297,6 +297,9 @@ p {
     cursor: pointer;
     display: block;
     border-radius: 5%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .dropdown-content a:hover {
@@ -343,10 +346,12 @@ p {
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  text-decoration: none;
+  color: #56044E;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  text-align: right;
 }
 
 .close:hover,
@@ -451,8 +456,9 @@ th, td {
 .three-dots{
     font-size: 20px;
     color: blue;
-    text-align: right;
+    text-align: left;
     cursor: pointer;
+
 }
 
 /*============= 
@@ -476,7 +482,7 @@ th, td {
 .post h2 {
     font-size: 1.3em;
     margin-bottom: 7px;
-    /*font-weight: bold;*/
+
     text-align: center;
 }
 .meta {
@@ -488,6 +494,16 @@ th, td {
     float: left;
     margin: 0 10px 5px 0;
     max-width: 350px;
+}
+
+.table-form {
+    border-collapse: collapse;
+    border: 0px;
+    text-align: left;
+}
+
+.table-form th, td {
+    border: 0px;
 }
 
 /*=================

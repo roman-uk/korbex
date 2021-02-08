@@ -72,8 +72,19 @@ class ServiceForm(forms.ModelForm):
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ['image', 'title', 'content', 'author']
+        fields = [ 'title', 'content', 'author', 'image']
 
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'placeholder': 'Tytul artyklu'
+            }),
+            'content': forms.Textarea(attrs={
+                'placeholder': 'Treść artykułu'
+            }),
+            'author': forms.TextInput(attrs={
+                'placeholder': 'Wprowadż ime awtora artykłu'
+            })
+        }
 
 # >>>>>>>>> CONTACT PAGE <<<<<<<<<<<
 class ContactDataForm(forms.ModelForm):

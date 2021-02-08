@@ -16,6 +16,9 @@ urlpatterns = [
     path('service/delete_repair', views.delete_repair, name='delete_repair'),
     path('service/delete_type', views.delete_type, name='delete_type'),
     path('service', views.service, name='service_p'),
+    path('blog/create', views.CreateBlog.as_view(), name='blog_create'),
+    path('blog/update/<int:pk>', views.UpdateBlog.as_view(), name='blog_update'),
+    path('blog/delete/<int:pk>', views.blog_delete, name='blog_delete'),
     path('blog', views.blog, name='blog_p'),
     path('contact', views.contact, name='contact_p'),
 ]

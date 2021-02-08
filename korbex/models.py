@@ -8,6 +8,13 @@ class HomeContent(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='home_image')
     data_add = models.DateField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_record = HomeContent.objects.get(pk=self.pk)
+            if old_record.image != self.image:
+                old_record.image.delete(save=False)
+        super(HomeContent, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.title
 
@@ -60,11 +67,18 @@ class Service(models.Model):
 
 # >>>>>>> Models from Blog page <<<<<<<<
 class Blog(models.Model):
-    title = models.CharField(max_length=50, unique=True)
-    content = models.TextField(help_text="input your text")
-    image = models.ImageField(null=True, blank=True)
+    title = models.CharField(max_length=50, unique=True, verbose_name='Tytulł')
+    content = models.TextField(verbose_name='Treść')
+    image = models.ImageField(null=True, blank=True, verbose_name='Obrazek do artyklu', upload_to='blog_image')
     data_add = models.DateField(auto_now=True)
-    author = models.CharField(max_length=20, help_text="Imie awtora tekstu")
+    author = models.CharField(max_length=20, verbose_name='Awtor artyklu')
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_record = Blog.objects.get(pk=self.pk)
+            if old_record.image != self.image:
+                old_record.image.delete(save=False)
+        super(Blog, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
