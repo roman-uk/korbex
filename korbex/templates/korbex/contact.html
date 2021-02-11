@@ -8,10 +8,13 @@
 {% block content %}
 <div class="content-contact">
     <h3 style="color: white; margin: 20px 50px">KONTAKT<a style="color: #A9F5A9; margin-left: 10px" href="{% url 'contact-data_create' %}">Nowy kontakt</a></h3>
-    <div class="allcontact">
+
+<!--===================== a contact-block with three squares (with address, phone and facebook) ===============-->
+	<div class="allcontact">
 		{% for cont in contact_data %}
   	   <div class="onecontact">
   	   			<h2>ADRES:
+					<!-- three dots dropdown menu-->
 				   <div class="dropdown">
 						<span class="three-dots">&#10247;</span>
 						<div class="dropdown-content">
@@ -19,13 +22,15 @@
 							<a href="{% url 'contact-delete' 'data' cont.id %}"
 							   onclick="return confirm('Usunąć {{cont.address}}, {{cont.telephone}}?');">Usunąć</a>
 						</div>
-					</div>
+				   </div>
+					<!------end three dots--------->
 				</h2>
-  	   		<br>------------------
+		   <br><p>------------------</p>
   	   		<br>{{cont.address}}
 	   </div>
  	   <div class="onecontact">
 		   <h2>TELEFON:
+			   		<!-- three dots dropdown menu-->
 				   <div class="dropdown">
 						<span class="three-dots">&#10247;</span>
 						<div class="dropdown-content">
@@ -33,9 +38,10 @@
 							<a href="{% url 'contact-delete' 'data' cont.id %}"
 							   onclick="return confirm('Usunąć {{cont.address}}, {{cont.telephone}}?');">Usunąć</a>
 						</div>
-					</div>
+				   </div>
+			   		<!------end three dots--------->
 				</h2>
- 	   		<br>-----------------
+ 	   		<br><p>-----------------</p>
  	   		<br>{{cont.telephone}}
  	   	</div>
  	   <div class="facecontact">
@@ -43,12 +49,17 @@
  	   </div>
 		{% endfor %}
   	</div>
-	<!--Google maps in page -->
+	<!--=============================== end contact-block =============================-->
+
+<!--============================ Google maps in page =============================-->
 	<h3 style="color: white; padding: 0 3%">Znajdziesz nas tutaj</h3>
   	   <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2323.713862522614!2d18.6227143158776
   	   5!3d54.379704980208565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46fd74a28c91d1df%3A0xb7843412ea01d
   	   40!2sDzielna%2033%2C%2080-404%20Gda%C5%84sk%2C%20Poland!5e0!3m2!1sen!2sua!4v1607779704127!5m2!1sen!2sua"
 					width="600" height="450"  allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+	<!-- ===================================== end maps in page ==========================-->
+
+<!--====================== a block (working hours) with an indication of the work schedule ============= -->
   	   <div class="worktime">  	   		
  	   		<ul>
 
@@ -56,6 +67,7 @@
 				<li><a style="color: #A9F5A9" href="{% url 'contact-day_create' %}">Dodaj dzień</a></li>
 				{%for work in working_hours%}
  	   			<li class="day">{{work.working_day|slice:"2:"}}
+					<!-- three dots dropdown menu-->
 					<div class="dropdown">
 						<span class="three-dots">&#10247;</span>
 						<div class="dropdown-content">
@@ -64,11 +76,13 @@
 							   onclick="return confirm('Usunąć {{work.working_day|slice:'2:'}} ?');">Usunąć</a>
 						</div>
 					</div>
+					<!-------end three dots-------->
 				</li>
  	   			<li>{{work.working_hours}}</li>
 				{% endfor %}
  	   		</ul>	
  	   </div>
-  	  
+	<!--  ==================	  end working hours ===============================-->
+
 </div>
 {% endblock %}

@@ -19,6 +19,21 @@
         </form>
 
     </div>
+{% for prod in products %}
+<div class="position">
+
+    <div class="image"><img></div>
+
+    <div class="brief-contents">
+        <h2>{{prod.name_product}}</h2>
+        <h3>{{prod.incomplete_description}}</h3>
+        <p>Short description</p>
+    </div>
+
+</div>
+{% endfor %}
+
+
 <ul class="thumb-list">
     {% for prod in products %}
        <li>
