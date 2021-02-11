@@ -13,7 +13,7 @@
     <div>
     <h3>{{hc.title}}
         <div class="dropdown">
-            <span style="margin-left: 10px" class="three-dots">&#10247;</span>
+            <span class="three-dots">&#10247;</span>
             <div class="dropdown-content drop-menu">
                 <a href="{% url 'home_update' hc.id %}">Redagować</a>
                 <a href="{% url 'home_delete' hc.id %}" onclick="return confirm('Usunąć {{hc.title}}?');">Usunąć</a>

@@ -20,5 +20,10 @@ urlpatterns = [
     path('blog/update/<int:pk>', views.UpdateBlog.as_view(), name='blog_update'),
     path('blog/delete/<int:pk>', views.blog_delete, name='blog_delete'),
     path('blog', views.blog, name='blog_p'),
+    path('contact/create-data', views.CreateDataContact.as_view(), name='contact-data_create'),
+    path('contact/create-day', views.CreateDayContact.as_view(), name='contact-day_create'),
+    path('contact/update-data<int:pk>', views.UpdateDataContact.as_view(), name='contact-data_update'),
+    path('contact/update-day<int:pk>', views.UpdateDayContact.as_view(), name='contact-day_update'),
+    path('contact/delete<mod>/<int:pu>', views.contact_delete, name='contact-delete'),
     path('contact', views.contact, name='contact_p'),
 ]

@@ -17,7 +17,7 @@
         <div id="art{{item.id}}" class="post">
             <h2>{{item.title}}
             <div class="dropdown">
-                <span style="margin-left: 10px" class="three-dots">&#10247;</span>
+                <span class="three-dots">&#10247;</span>
                 <div class="dropdown-content drop-menu">
                     <a href="{% url 'blog_update' item.id %}">Redagować</a>
                     <a href="{% url 'blog_delete' item.id %}" onclick="return confirm('Usunąć {{item.title}}?');">Usunąć</a>

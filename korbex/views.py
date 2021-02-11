@@ -8,7 +8,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 # Start
 def home(request):
     homecontent = HomeContent.objects.all().order_by('-data_add')
-    blogcontent = Blog.objects.all().order_by("data_add")[:5]
+    blogcontent = Blog.objects.all().order_by("-data_add")[:5]
     context = {"homecontent": homecontent, 'blogcontent': blogcontent}
     return render(request, 'korbex/home.html', context)
 
@@ -162,7 +162,42 @@ def blog_delete(request, pk=''):
 def contact(request):
     context = {}
     context['contact_data'] = ContactData.objects.all()
-
-    context['working_hours'] = WorkingHours.objects.all()
-
+    context['working_hours'] = WorkingHours.objects.all().order_by('working_day')
     return render(request, 'korbex/contact.html', context)
+
+
+class CreateDataContact(CreateView):
+    model = ContactData
+    form_class = ContactDataForm
+    template_name = 'korbex/contact-update.html'
+    success_url = '/contact'
+
+
+class CreateDayContact(CreateView):
+    model = WorkingHours
+    form_class = WorkingHoursForm
+    template_name = 'korbex/contact-update.html'
+    success_url = '/contact'
+
+
+class UpdateDataContact(UpdateView):
+    model = ContactData
+    form_class = ContactDataForm
+    template_name = 'korbex/contact-update.html'
+    success_url = '/contact'
+
+
+class UpdateDayContact(UpdateView):
+    model = WorkingHours
+    form_class = WorkingHoursForm
+    template_name = 'korbex/contact-update.html'
+    success_url = '/contact'
+
+
+def contact_delete(request, mod='', pu=''):
+    if mod == 'data':
+        cont = ContactData.objects.get(id=pu)
+    else:
+        cont = WorkingHours.objects.get(id=pu)
+    cont.delete()
+    return redirect('contact_p')

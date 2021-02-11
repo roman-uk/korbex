@@ -4,7 +4,8 @@
    ========================*/
 body{
     background-attachment: fixed;
-    background-size: 100%;
+    background-height: 100%;
+    background-repeat: no-repeat;
     font-family: Raleway, sans-serif;
     background-image: url(https://i.pinimg.com/originals/5f/47/84/5f47840c5ee678b8c16ce80b39d7a0ad.jpg);
 
@@ -104,10 +105,7 @@ p {
      HOME
 =====================*/
 
-.drop-menu{
-    margin-left: -18px;
-    font-size: 14px;
-}
+
 
 .content-home {
     background: url("../images/rm21.jpg");
@@ -152,6 +150,13 @@ p {
      STORE
 ===================== */
 
+.content-store {
+    background: #81BEF7;
+    width: 100%;
+    padding: 2px;
+    border-radius: 2%;
+    opacity: 0.9;
+}
 .sort-bar {
     border-bottom: 1px dotted #dfe9f2;
     font: 0.9em Helvetica, Arial, Tahoma;
@@ -185,13 +190,6 @@ p {
     color: #61380B;
 }
 
-.content-store {
-    background: #81BEF7;
-    width: 100%;
-    padding: 2px;
-    border-radius: 2%;
-    opacity: 0.9;
-}
 
 .thumb-list {
     display: flex;
@@ -267,6 +265,13 @@ p {
    SERVICE
  ======================*/
 
+.content-service {
+    background: url("../images/aluminum_texture.jpg");
+    width: 100%;
+    padding: 20px;
+    border-radius: 2%;
+    filter: brightness(120%);
+}
         /*        Adding New records to the Page       */
 
     /* The POP-UP MENU (drop down menu for chose new position or new type repair)*/
@@ -289,6 +294,9 @@ p {
     left: 20px;
     top: 18px;
     border-radius: 5%;
+    margin-left: -18px;
+    font-size: 14px;
+    z-index:3;
 }
 
 .dropdown-content a {
@@ -352,6 +360,7 @@ p {
   font-size: 28px;
   font-weight: bold;
   text-align: right;
+  margin: 0 20px;
 }
 
 .close:hover,
@@ -423,13 +432,6 @@ p {
 
             /*  CONTENT */
 
-.content-service {
-    background: url("../images/aluminum_texture.jpg");
-    width: 100%;
-    padding: 20px;
-    border-radius: 2%;
-    filter: brightness(120%);
-}
 
 table {
     font-family: arial, sans-serif;
@@ -454,11 +456,11 @@ th, td {
 }
 
 .three-dots{
+    margin-left: 10px;
     font-size: 20px;
     color: blue;
     text-align: left;
     cursor: pointer;
-
 }
 
 /*============= 
@@ -500,6 +502,7 @@ th, td {
     border-collapse: collapse;
     border: 0px;
     text-align: left;
+    margin: 0 20px;
 }
 
 .table-form th, td {
@@ -513,12 +516,14 @@ th, td {
 .content-contact {
     background: url(../images/stars_sky.jpg);
     width: 100%;
+    border-radius: 15px;
+    opacity: 0.85;
 }
 
 .allcontact {
     display: flex;
     flex-direction: row;
-    /*background-color: #CED8F6;    */
+    flex-wrap: wrap;
     box-sizing: border-box;
     width: 100%;
     padding: 2%;
@@ -526,12 +531,13 @@ th, td {
 
 .onecontact {    
     display: flex;
+    flex-direction: column;
     background-color: #CEECF5;
     margin: 3%;
     padding: 5%;
     padding-right: 1%;
     height: 100px;
-    width: 25%;
+    width: 20%;
     border-radius: 10%;
 }
 
@@ -540,7 +546,7 @@ th, td {
     background-color: #CEECF5;
     margin: 3%;
     padding: 2%;
-    width: 25%;
+    width: 22%;
     border-radius: 10%;
 }
 
@@ -567,7 +573,7 @@ th, td {
     margin: 10px;    
 }
 
-.worktime a {
+.worktime span {
     font-weight: bold;
     font-size: 20px;
     letter-spacing: 1px;

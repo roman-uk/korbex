@@ -8,6 +8,8 @@ class HomeContent(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='home_image')
     data_add = models.DateField(auto_now=True)
 
+    # Overriding the save method so that when an image is deleted or updated,
+    #           the old image is deleted from the storage
     def save(self, *args, **kwargs):
         if self.pk:
             old_record = HomeContent.objects.get(pk=self.pk)
@@ -18,6 +20,7 @@ class HomeContent(models.Model):
     def __str__(self):
         return self.title
 
+    # adding an imageURL method to exclude an error if the image is missing
     @property
     def imageUrl(self):
         try:
@@ -38,6 +41,7 @@ class StoreProducts(models.Model):
     def __str__(self):
         return self.name_product
 
+    # adding an imageURL method to exclude an error if the image is missing
     @property
     def imageUrl(self):
         try:
@@ -73,6 +77,8 @@ class Blog(models.Model):
     data_add = models.DateField(auto_now=True)
     author = models.CharField(max_length=20, verbose_name='Awtor artyklu')
 
+    # Overriding the save method so that when an image is deleted or updated,
+    #           the old image is deleted from the storage
     def save(self, *args, **kwargs):
         if self.pk:
             old_record = Blog.objects.get(pk=self.pk)
@@ -83,6 +89,7 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
+    # adding an imageURL method to exclude an error if the image is missing
     @property
     def imageUrl(self):
         try:
@@ -95,13 +102,22 @@ class Blog(models.Model):
 #   ***Models from Contact page***
 class ContactData(models.Model):
     address = models.TextField(max_length=200, blank=True)
-    telephone = models.TextField(max_length=200, blank=True)
+    telephone = models.CharField(max_length=200, blank=True)
     facebook = models.URLField(verbose_name='facebook', blank=True)
 
 
 class WorkingHours(models.Model):
-    working_day = models.CharField(max_length=20)
-    working_hours = models.CharField(max_length=25)
+    week_day = (
+        ('1.Poniedziałek', 'Poniedziałek'),
+        ('2.Wtorek', 'Wtorek'),
+        ('3.Środa', 'Środa'),
+        ('4.Czwartek', 'Czwartek'),
+        ('5.Piątek', 'Piątek'),
+        ('6.Sobota', 'Sobota'),
+        ('7.Niedzelia', 'Niedzelia'),
+    )
+    working_day = models.CharField(max_length=20, choices=week_day, verbose_name='Dzień tygodnia')
+    working_hours = models.CharField(max_length=25, verbose_name='Godziny pracy')
 
     def __str__(self):
         return self.working_day

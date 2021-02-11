@@ -72,7 +72,7 @@ class ServiceForm(forms.ModelForm):
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = [ 'title', 'content', 'author', 'image']
+        fields = ['title', 'content', 'author', 'image']
 
         widgets = {
             'title': forms.TextInput(attrs={
@@ -97,3 +97,8 @@ class WorkingHoursForm(forms.ModelForm):
     class Meta:
         model = WorkingHours
         fields = ['working_day', 'working_hours']
+        widgets = {
+            'working_hours': forms.TextInput(attrs={
+                'placeholder': '8:00 - 18:00, albo Zamknięto'
+            })
+        }
