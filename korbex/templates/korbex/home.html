@@ -8,7 +8,7 @@
 {% block content %}
 
 <div class="content-home">
-    <a href="{% url 'home_create' %}"><h2>Nowy zapys</h2></a>
+    <h1>Serwis rowerowy. Witamy w serwisie<a href="{% url 'home_create' %}">Nowy zapys</a></h1>
     {% for hc in homecontent %}
     <div>
     <h3>{{hc.title}}
@@ -21,9 +21,10 @@
         </div>
     </h3>
     <img src="{{ hc.imageUrl }}">
-    <p>{{hc.content}}</p>
+    <p>{{hc.content|linebreaksbr}}</p>
     </div>
     {% endfor %}
+<!-- -------------   block sidebar ------------ -->
 </div>
     <div class="sidebar">
         <h3>ARTYKULY</h3>

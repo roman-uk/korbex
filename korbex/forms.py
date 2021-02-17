@@ -25,27 +25,21 @@ class HomeContentForm(forms.ModelForm):
 class StoreProductsForm(forms.ModelForm):
     class Meta:
         model = StoreProducts
-        fields = ['image', 'name_product', 'incomplete_description', 'continue_description', 'price']
+        fields = ['name_product', 'image', 'incomplete_description', 'continue_description', 'price']
 
-
-option = (('1', 'A - Z'),
-          ('2', 'Z - A'),
-          ('3', 'Cena wgóre'),
-          ('4', 'Cena wdół'),)
-
-
-class SortedForm(forms.Form):
-    sorted_prod = forms.ChoiceField(choices=option, label='')
-
-
-class PriceMinMax(forms.Form):
-    price_min = forms.IntegerField(widget=forms.NumberInput(attrs={"class": "price"}), min_value=0, max_value=99999)
-    price_max = forms.IntegerField(widget=forms.NumberInput(attrs={"class": "price"}), min_value=1, max_value=100000)
-
-
-class SearchForm(forms.Form):
-    search_prod = forms.CharField(widget=forms.TextInput(attrs={"class": "search", 'placeholder': 'czego szukasz?'}),
-                                  max_length="20", label='')
+        widgets = {
+            'name_product': forms.TextInput(attrs={
+                'placeholder': 'Wpisz nazwę towaru'
+            }),
+            'incomplete_description': forms.Textarea(attrs={
+                'placeholder': 'Napisz krótki opis towaru do 180 znaków',
+                'cols': 30, 'rows': 5,
+            }),
+            'continue_description': forms.Textarea(attrs={
+                'placeholder': 'Podaj pełny opis towaru',
+                'cols': 60, 'rows': 15
+            }),
+        }
 
 
 # >>>>>>>>> SERVICE PAGE <<<<<<<<<<<
@@ -85,6 +79,7 @@ class BlogForm(forms.ModelForm):
                 'placeholder': 'Wprowadż ime awtora artykłu'
             })
         }
+
 
 # >>>>>>>>> CONTACT PAGE <<<<<<<<<<<
 class ContactDataForm(forms.ModelForm):

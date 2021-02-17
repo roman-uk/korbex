@@ -49,7 +49,7 @@ h3 {
     height: 100%;
     width: 30%;
 }
-.userpic h1{
+.userpic span{
     position: absolute;
     top: 0px;
     left: 10%;
@@ -105,7 +105,17 @@ p {
      HOME
 =====================*/
 
+h1 {
+    font-size: 22px;
+    font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+    color: #0B173B;
+    margin: 15px 10px 0px 5px;
+    text-align: center;
 
+}
+h1 a {
+    margin: 0 10px;
+}
 
 .content-home {
     background: url("../images/rm21.jpg");
@@ -114,7 +124,7 @@ p {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    border-radius: 2%;
+    border-radius: 10px;
 }
 
 .content-home h3 {
@@ -154,14 +164,21 @@ p {
     background: #81BEF7;
     width: 100%;
     padding: 2px;
-    border-radius: 2%;
+    border-radius: 10px;
     opacity: 0.9;
 }
 .sort-bar {
     border-bottom: 1px dotted #dfe9f2;
     font: 0.9em Helvetica, Arial, Tahoma;
-    margin: 20px 30px;
+    margin: 20px 20px;
     padding: 10px 0;
+}
+
+form a {
+    border: 2px solid grey;
+    border-radius:5px;
+    background: #E6E6E6;
+    padding: 20px 0;
 }
 
 .sort-bar a {
@@ -191,78 +208,71 @@ p {
 }
 
 
+.item-product {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    background: #A9D0F5;
+    border-radius: 7px;
+    height: 140px;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
 
+.item-product h4 {
+    margin: 5px 20px;
+    font-size: 1.1em;
+    color: #61380B;
+    font-family: Veranda ;
+}
 
-/*=======================================*/
-.thumb-list {
+.item-product img {
+    max-height: 130px;
+    width: 200px;
+    padding: 5px;
+    border-radius: 7%;
+}
+
+.brief-contents {
+    padding: 5px 10px;
+}
+
+.one-product {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+    background-color: #EFF5FB;
+    padding: 23px;
+    border-radius: 10px;
+
 }
 
-.thumb-list li {
-    display: grid;
-    /*height: 5em;*/
-    grid-template-columns: 15% 20% 55% 10%;
-    border: 1px #4833FE solid;
+.one-product img {
+    max-height: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    align-content: center;
+
 }
 
-.thumb-list li img {
-    height: 78px;
-    width: 118px;
-    padding-top: 2px;
+.one-product h2 {
+    font-size: 1.2em;
+    padding: 20px 30px;
+    font-family: Impact;
+    text-align: center;
 
-    padding-left: 2px;
-    border-radius: 3%;
-    z-index: 0;
 }
 
-.thumb-list li img:hover {
-    position: absolute;
-    height: 250px;
-    width: 370px;
+.product-price {
+    text-align: center;
+    padding: 0 20px;
+    font-size: 1.4em;
+    color: #0B173B;
+    font-family: Luminari;
 }
 
-.thumb-list li h4 {
-    overflow: hidden;
-    margin: 5px;
+.product-description {
+    margin: 20px 50px;
+    text-indent: 20px;
 }
-
-.thumb-list li p {
-    overflow: hidden;
-    margin: 5px;
-}
-.price {
-    overflow: hidden;
-    margin: 5px;
-}
-/* hiding part of the text with the product description */
-.reference {
-    display: none;
-}
-
-.reference ~ .story {
-    display: none;
-}
-
-.reference ~ label {
-    font-size: 16px;
-    padding: 0;
-    color: purple;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.reference:checked ~ .story {
-    display: block;
-}
-
-.hi{
-    display: none;
-}
-
 
 /*=====================
    SERVICE
@@ -270,10 +280,12 @@ p {
 
 .content-service {
     background: url("../images/aluminum_texture.jpg");
+    opacity: 0.9;
+    background: #81BEF7;
     width: 100%;
     padding: 20px;
-    border-radius: 2%;
-    filter: brightness(120%);
+    border-radius: 10px;
+
 }
         /*        Adding New records to the Page       */
 
@@ -437,11 +449,12 @@ p {
 
 
 table {
+    margin: 20px 0;
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    border: 2px solid grey;
     width: 100%;
-    border: 2px solid black;
+    border: none;
+
 }
 
 th, td {
@@ -449,6 +462,8 @@ th, td {
     border-bottom: 1px black solid;
     padding: 8px;    
     font-size: 1.1em;
+    border: none;
+
 }
 
 .col2 {
@@ -473,21 +488,22 @@ th, td {
 .content-blog {
     display: flex;
     flex-direction: column;
-    background-color: #F2F2F2;
-    padding: 3px;      
+    opacity: 0.9;
+    background: #81BEF7;
+    padding: 3px;
+    border-radius: 10px;
 }
 
 .post {         
-    border: 5px solid #E6E6E6;
+    background: #E6E6E6;
     border-radius: 2%;
-    margin-top: 10px;
+    margin: 10px;
     padding: 3px;    
 } 
 
 .post h2 {
     font-size: 1.3em;
     margin-bottom: 7px;
-
     text-align: center;
 }
 .meta {
@@ -573,7 +589,7 @@ th, td {
 }
 
 .worktime li {    
-    margin: 10px;    
+    margin: 7px 10px;
 }
 
 .worktime span {
@@ -584,10 +600,9 @@ th, td {
 
 .day {
     font-size: 18px;
-
 }
 
 .day + li {
     padding-left: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }

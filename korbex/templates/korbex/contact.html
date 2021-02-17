@@ -7,7 +7,8 @@
 
 {% block content %}
 <div class="content-contact">
-    <h3 style="color: white; margin: 20px 50px">KONTAKT<a style="color: #A9F5A9; margin-left: 10px" href="{% url 'contact-data_create' %}">Nowy kontakt</a></h3>
+    <h1 style="color: white">Serwis rowerowy. Witamy w naszym serwisie
+		<a style="color: #A9F5A9; margin-left: 10px" href="{% url 'contact-data_create' %}">Nowy kontakt</a></h1>
 
 <!--===================== a contact-block with three squares (with address, phone and facebook) ===============-->
 	<div class="allcontact">
@@ -25,7 +26,7 @@
 				   </div>
 					<!------end three dots--------->
 				</h2>
-		   <br><p>------------------</p>
+		   <br><p style="padding: 5px"></p>
   	   		<br>{{cont.address}}
 	   </div>
  	   <div class="onecontact">
@@ -41,11 +42,11 @@
 				   </div>
 			   		<!------end three dots--------->
 				</h2>
- 	   		<br><p>-----------------</p>
+ 	   		<br><p style="padding: 5px"></p>
  	   		<br>{{cont.telephone}}
  	   	</div>
  	   <div class="facecontact">
-		   <a href="{{cont.facebook}}"><img src="{% static 'images/facebook.jpeg' %}"></a>
+		   <a href="{{cont.facebook}}"><img src="{% static 'korbex/images/facebook.jpeg' %}"></a>
  	   </div>
 		{% endfor %}
   	</div>
@@ -63,10 +64,10 @@
   	   <div class="worktime">  	   		
  	   		<ul>
 
- 	   			<li><span>Otwarto:</span></li>
+ 	   			<li><span>Czynne:</span></li>
 				<li><a style="color: #A9F5A9" href="{% url 'contact-day_create' %}">Dodaj dzień</a></li>
 				{%for work in working_hours%}
- 	   			<li class="day">{{work.working_day|slice:"2:"}}
+ 	   			<li style="margin-top: 12px;" class="day">{{work.working_day|slice:"2:"}}
 					<!-- three dots dropdown menu-->
 					<div class="dropdown">
 						<span class="three-dots">&#10247;</span>

@@ -32,14 +32,23 @@ class HomeContent(models.Model):
 
 # >>>>>>> Models from Store page <<<<<<<<
 class StoreProducts(models.Model):
-    image = models.ImageField(null=True, blank=True)
-    name_product = models.CharField(max_length=40, unique=True)
-    incomplete_description = models.TextField(max_length=130)
-    continue_description = models.TextField(max_length=600, null=True, blank=True)
-    price = models.PositiveIntegerField()
+    image = models.ImageField(null=True, blank=True, verbose_name='Obrazek do towaru', upload_to='store_image')
+    name_product = models.CharField(max_length=40, unique=True, verbose_name='Nazwa towaru')
+    incomplete_description = models.TextField(max_length=180, verbose_name='Krótki opis towaru')
+    continue_description = models.TextField(null=True, blank=True, verbose_name='Pełny opis towaru')
+    price = models.PositiveIntegerField(verbose_name='Cena towaru')
 
     def __str__(self):
         return self.name_product
+
+    # Overriding the save method so that when an image is deleted or updated,
+    #           the old image is deleted from the storage
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_record = StoreProducts.objects.get(pk=self.pk)
+            if old_record.image != self.image:
+                old_record.image.delete(save=False)
+        super(StoreProducts, self).save(*args, **kwargs)
 
     # adding an imageURL method to exclude an error if the image is missing
     @property

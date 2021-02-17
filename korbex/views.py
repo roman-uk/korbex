@@ -34,17 +34,64 @@ def home_delete(request, pk=''):
     return redirect('home_p')
 
 
-# Sklep
+#   --------------Sklep-----------------
+#            product page
 def store(request):
+    content = StoreProducts.objects.all()
+    search = request.GET.get('search', '')
+    if search != '':
+        content = StoreProducts.objects.filter(name_product__icontains=search)
+    sort = str(request.GET.get('sort', 'name_product'))
+    price_min = request.GET.get('pr_min', 0)
+    if price_min == '':
+        price_min = 0
+    price_max = request.GET.get('pr_max', 100000)
+    if price_max == '':
+        price_max = 100000
     context = {}
+    context['search'] = search
+    context['price_min'] = price_min
+    context['price_max'] = price_max
     context['sort_form'] = SortedForm()
     context['prices_form'] = PriceMinMax()
     context['search_form'] = SearchForm()
-    context['products'] = StoreProducts.objects.all()
+    context['products'] = content.order_by(sort).filter(price__gte=price_min, price__lte=price_max)
     return render(request, 'korbex/store.html', context)
 
 
+#       one product that a visitor clicked on
+def one_product(request, pk=''):
+    context = {}
+    product = StoreProducts.objects.get(id=pk)
+    context['product'] = product
+    return render(request, 'korbex/one_product.html', context)
+
+
+#       adding a new product to the page
+class CreateStore(CreateView):
+    model = StoreProducts
+    form_class = StoreProductsForm
+    template_name = 'korbex/store-update.html'
+    success_url = '/store'
+
+
+#       product editing
+class UpdateStore(UpdateView):
+    model = StoreProducts
+    form_class = StoreProductsForm
+    template_name = 'korbex/store-update.html'
+    success_url = '/store'
+
+#       deleting an product
+def store_delete(request, pk=''):
+    prod = StoreProducts.objects.get(id=pk)
+    prod.delete()
+    return redirect('store_p')
+
+
 # --------- SERWIS -----------
+
+
 def service(request):
     error = ''
     type_repairs = TypeRepair.objects.all().order_by('type_repair')

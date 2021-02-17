@@ -1,0 +1,23 @@
+{% extends './index.html' %}
+{% load static %}
+
+{%block store%}
+    active
+{%endblock%}
+
+{% block content %}
+
+
+
+    <div class="one-product">
+
+        <div align="center"><img src="{{ product.imageUrl }}"></div>
+        <h2>{{product.name_product}}</h2>
+        <div class="product-price"> {{product.price}} zł</div>
+        <div class="product-description">{{product.continue_description|linebreaksbr}}</div>
+
+    </div>
+
+
+
+{% endblock %}

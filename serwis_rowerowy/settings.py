@@ -120,9 +120,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
+#
+# Activate this If the static folder is not in the application folder
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
+# STATIC_ROOT is the folder where static files will be stored after using manage.py collectstatic
+STATIC_ROOT = [
     os.path.join(BASE_DIR, 'static')
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
