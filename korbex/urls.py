@@ -3,6 +3,7 @@ from korbex import views
 
 
 urlpatterns = [
+
     path('', views.home, name='home_p'),
     path('home', views.home, name='home_p'),
     path('home/create', views.CreateHome.as_view(), name='home_create'),
@@ -30,5 +31,7 @@ urlpatterns = [
     path('contact/update-data<int:pk>', views.UpdateDataContact.as_view(), name='contact-data_update'),
     path('contact/update-day<int:pk>', views.UpdateDayContact.as_view(), name='contact-day_update'),
     path('contact/delete<mod>/<int:pu>', views.contact_delete, name='contact-delete'),
-
+    path('login', views.ServiceLogin.as_view(), name='login_p'),
+    path('logout', views.ServiceLogout.as_view(), name='logout_p'),
+    path('change-password', views.UpdatePassword.as_view(), name='change_password')
 ]

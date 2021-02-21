@@ -1,0 +1,22 @@
+{% extends './index.html' %}
+{% load static %}
+
+{%block home%}
+    active
+{%endblock%}
+
+{% block content %}
+
+<div class="content-store">
+    <a href="{% url 'home_p' %}" class="close">&times;</a>
+    <form method="post">
+        {% csrf_token %}
+        <table class="table-form">
+            {{form.as_table}}
+        </table>
+        <input style="margin:30px" type="submit" value="Zaloguj się"/>
+    </form>
+
+</div>
+
+{% endblock %}

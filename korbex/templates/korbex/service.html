@@ -11,7 +11,9 @@
 
     <div style="display: flex">
         <h3>Serwis rowerowy. Witamy w naszym serwisie </h3>
+
 <!-----------------The pop-up menu for: new type repair and new repair----------------------->
+        {% if request.user.is_authenticated %}
         <div class="dropdown">
             <span class="dropbtn"> + NEW </span>
                 <div class="dropdown-content">
@@ -19,6 +21,7 @@
                     <a id="newrepairBtn" >Nowa Naprawa</a>
                 </div>
         </div>
+        {% endif %}
     </div>
 
 <!-----------Modal window / new type repair--------------->
@@ -74,6 +77,7 @@
         <th></th>
 
         <!--three dots to start updating the repair type -->
+    {% if request.user.is_authenticated %}
         <th class="three-dots" onclick="ipsum{{type_r.id}}.style.display='block'">&#10247;</th>
 
         <!--The hidden field that includes a window to update the type repair-->
@@ -86,6 +90,8 @@
             </form>
             <p style="margin: 20px 150px 0 0"><a href="{% url 'delete_type' %}?id={{type_r.id}}">Usuń całkowicie ten wpis</a></p>
         </th>
+    {% endif %}
+
     </tr>
         <!--          Repair in the table         -->
     {% for repair in repairs %}
@@ -94,6 +100,7 @@
                 <td>{{repair.name_repair}}</td><!--the field for name repair(nazwa naprawy) -->
                 <td>{{repair.price}}</td>       <!--the field for repair price (cena naprawy) -->
 
+            {% if request.user.is_authenticated %}
                 <!--three dots to start updating the repair -->
                 <td class="three-dots" onclick="lorem{{repair.id}}.style.display='block'">&#10247;</td>
 
@@ -127,6 +134,7 @@
                         </form>
                         <p style="margin: 20px 0 0 50px"><a href="{% url 'delete_repair' %}?id={{repair.id}}">Usuń całkowicie ten wpis</a></p>
                 </td>
+            {% endif %}
             </tr>
         {% endif %}
     {% endfor %}

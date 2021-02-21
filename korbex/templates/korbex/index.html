@@ -9,22 +9,34 @@
     <script src="{% static 'korbex/js/script.js' %}"></script>
 </head>
 <body>
+
     <div class="container">
+
+
+
         <div class="header">
             <div class="title-block">
+
                 <img src="{% static 'korbex/images/stones.jpg' %}" width="100%" height="100%">
             </div>
             <div class="userpic">
                 <img src="{% static 'korbex/images/service.jpeg' %}"  width="100%" height="100%">
+
                 <span>K O R B E X</span>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'change_password' %}" class="login" style="left: 0; background: none; color: blue">zmień hasło</a>
+                    <a class="login" href="{% url 'logout_p' %}">Wyloguj się</a>
+                {% else %}
+                    <a class="login" href="{% url 'login_p' %}">Zaloguj się</a>
+                {% endif %}
             </div>
         </div>
         <div class="nav">
             <ul>
-                <li class="{%block home%}{%endblock%}"><a href="{% url 'home_p' %}">Glowna</a></li>
+                <li class="{%block home%}{%endblock%}"><a href="{% url 'home_p' %}">Głowna</a></li>
                 <li class="{%block store%}{%endblock%}"><a href="{% url 'store_p' %}">Sklep</a></li>
                 <li class="{%block service%}{%endblock%}"><a href="{% url 'service_p' %}">Serwis</a></li>
-                <li class="{%block blog%}{%endblock%}"><a href="{% url 'blog_p' %}">BLOG</a></li>
+                <li class="{%block blog%}{%endblock%}"><a href="{% url 'blog_p' %}">Blog</a></li>
                 <li class="{%block contact%}{%endblock%}"><a href="{% url 'contact_p' %}">Kontakt</a></li>
             </ul>
         </div>
