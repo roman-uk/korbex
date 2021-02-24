@@ -33,7 +33,7 @@ class UpdatePassword(LoginRequiredMixin, PasswordChangeView):
 
 
 
-# Start/ Home page
+# >>>>>>>>>>>>>>>>>>>>>> Start/ Home page <<<<<<<<<<<<<<<<<<<<<<
 def home(request):
     homecontent = HomeContent.objects.all().order_by('-data_add')
     blogcontent = Blog.objects.all().order_by("-data_add")[:5]

@@ -7,7 +7,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', admin.site.urls),
     path('', include('korbex.urls')),
 ]
 

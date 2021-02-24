@@ -8,7 +8,8 @@
 {% block content %}
 
 <div class="content-home">
-    <h1>Serwis rowerowy. Witamy w serwisie
+
+     <h1>Serwis rowerowy. Witamy w serwisie
         {% if request.user.is_authenticated %}
             <a href="{% url 'home_create' %}">Nowy zapys</a>
         {% endif %}

@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl-pl' #'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -133,3 +133,6 @@ STATIC_ROOT = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# this is an alternative to the method:  def get_success_url
+# LOGIN_REDIRECT_URL = '/'
