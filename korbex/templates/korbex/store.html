@@ -14,23 +14,38 @@
         {% endif %}
     </h1>
 
-<!-- ========================= Form Block - PRODUCT FILTER ======================= -->
+<!-- ========================= Filter Block - PRODUCT FILTER ======================= -->
     <div class="sort-bar">
         <form action="{% url 'store_p' %}?sort=sort&pr_min=pr_min&pr_max=pr_max" method="GET">
             {% csrf_token %}
-           Filter:
-            <select name="sort">
-                <option value="name_product">A - Z</option>
-                <option value="-name_product">Z -A</option>
-                <option value="price">Cena wgóre</option>
-                <option value="-price">Cena wdół</option>
-            </select>
-            | Cena  od <input type="number" value="{{price_min}}" placeholder="{{price_min}}" name="pr_min" size="4">
-                    do <input type="number" value="{{price_max}}" placeholder="{{price_max}}" name="pr_max" size="4">
-            |   <input type="text" value="{{search}}" placeholder="czego szukasz?" name="search" size="8">
-
+            <ul>
+                <li class="text-filter">Filter:</li>
+                <li>
+                <select class="choose-filter" name="sort">
+                    <option value="name_product">A - Z</option>
+                    <option value="-name_product">Z -A</option>
+                    <option value="price">Cena wgóre</option>
+                    <option value="-price">Cena wdół</option>
+                </select>
+                </li>
+                <li class="text-filter"><p style="width: 65px">Cena od</p></li>
+                <li>
+                <input class="price-filter" type="number" value="{{price_min}}" placeholder="{{price_min}}" name="pr_min">
+                </li>
+                <li class="text-filter"><p style="width: 27px">| do</p></li>
+                <li>
+                     <input class="price-filter" type="number" value="{{price_max}}" placeholder="{{price_max}}" name="pr_max" size="4">
+                </li>
+            <li>
+            <input class="search" type="text" value="{{search}}" placeholder="czego szukasz?" name="search" size="8">
+            </li>
+            <li >
             <input class="zastosuj" type="submit" value="Zastosuj">
-            <a style="padding: 5px 8px" href="{% url 'store_p' %}">RESET</a>
+            </li>
+            <li>
+            <a class="zastosuj" style="padding: 2px 6px" href="{% url 'store_p' %}">Reset</a>
+            </li>
+            </ul>
         </form>
     </div>
     <!-- ----------------------- End - PRODUCT FILTER ---------------------------- -->

@@ -20,8 +20,8 @@ class UpdatePasswordForm(PasswordChangeForm, SetPasswordForm):
         self.error_messages['password_incorrect'] = "Twoje stare hasło zostało wprowadzone nieprawidłowo. Proszę wprowadzić ponownie."
         self.error_messages['password_mismatch'] = "Dwa pola hasła nie pasowały"
         self.fields["old_password"].label = "Stare hasło"
-        self.fields["new_password1"].label = "Nowe hasło "
-        self.fields["new_password2"].label = "Powtórz nowe hasło "
+        self.fields["new_password1"].label = "Nowe hasło"
+        self.fields["new_password2"].label = "Powtórz nowe hasło"
 
 
 # >>>>>>> HOME PAGE <<<<<<<<<

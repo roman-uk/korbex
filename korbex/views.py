@@ -32,7 +32,6 @@ class UpdatePassword(LoginRequiredMixin, PasswordChangeView):
     template_name = 'korbex/change-password.html'
 
 
-
 # >>>>>>>>>>>>>>>>>>>>>> Start/ Home page <<<<<<<<<<<<<<<<<<<<<<
 def home(request):
     homecontent = HomeContent.objects.all().order_by('-data_add')

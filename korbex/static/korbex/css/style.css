@@ -113,6 +113,14 @@ p {
     display: flex;
 }
 
+.footer {
+    background: #FFFFFF;
+    padding: 0 50px;
+    border-radius: 5px;
+    font-size: 13px;
+    opacity: 0.6;
+}
+
 
 /*===================
      HOME
@@ -185,41 +193,64 @@ h1 a {
     font: 0.9em Helvetica, Arial, Tahoma;
     margin: 20px 20px;
     padding: 10px 0;
+    align-items: center;
 }
 
-form a {
-    border: 2px solid grey;
-    border-radius:5px;
-    background: #E6E6E6;
-    padding: 20px 0;
+.sort-bar ul {
+    display: flex;
+    align-items: center;
 }
 
-.sort-bar a {
-    padding: 0 5px;
-    text-decoration: none;
-    color: black;
+.text-filter {
+    font-size: 16px;
+    margin: 5px;
+    padding: 0;
+    border: 0;
 }
 
-.price {
-    width: 70px;
+.choose-filter {
+    height: 25px;
+    width: 95px;
+    margin: 2px;
+    padding: 0;
+    border: 2px solid #F2F2F2;
+    border-radius: 3px;
+}
+
+.price-filter {
+    height: 22px ;
+    width: 80px;
+    margin: 0;
+    padding: 0 2px;
+    border: 2px solid #A4A4A4;
+    border-radius: 3px;
 }
 
 .search {
+    height: 22px;
     width: 140px;
-    margin-left: 10px;
+    margin: 0 10px;
+    padding: 0 2px;
+    border: 2px solid #BDBDBD;
+    border-radius: 3px;
 }
 
 .zastosuj {
-    width: 100px;
-    height: 34px;
-    margin-left: 10px;
+    background-color: #F2F2F2;
+    width: 80px;
+    height: 24px;
+    margin: 0 5px;
+    padding: 0;
     border-radius:10%;
     border: 2px solid grey;
-}
-.sort-bar a:hover, .sort-bar a:focus, .sort-bar a:active {
-    color: #61380B;
+    text-decoration: none;
+    cursor: pointer;
 }
 
+.zastosuj:hover, .zastosuj:focus, .zastosuj:active {
+    background-color: #FFFFFF;
+    color: black;
+}
 
 .item-product {
     display: flex;
@@ -473,7 +504,7 @@ table {
 th, td {
     border-top: 1px black solid;
     border-bottom: 1px black solid;
-    padding: 8px;    
+    padding: 8px;
     font-size: 1.1em;
     border: none;
 
@@ -494,7 +525,7 @@ th, td {
     cursor: pointer;
 }
 
-/*============= 
+/*=============
 ||   BLOG    ||
 ===============*/
 
@@ -507,12 +538,12 @@ th, td {
     border-radius: 10px;
 }
 
-.post {         
+.post {
     background: #E6E6E6;
     border-radius: 2%;
     margin: 10px;
-    padding: 3px;    
-} 
+    padding: 3px;
+}
 
 .post h2 {
     font-size: 1.3em;
@@ -561,7 +592,7 @@ th, td {
     padding: 2%;
 }
 
-.onecontact {    
+.onecontact {
     display: flex;
     flex-direction: column;
     background-color: #CEECF5;
@@ -573,7 +604,7 @@ th, td {
     border-radius: 10%;
 }
 
-.facecontact {    
+.facecontact {
     display: flex;
     background-color: #CEECF5;
     margin: 3%;
@@ -596,12 +627,12 @@ th, td {
     border: 5px solid grey;
 }
 
-.worktime {   
-    display: flex;    
-    color: white;    
+.worktime {
+    display: flex;
+    color: white;
 }
 
-.worktime li {    
+.worktime li {
     margin: 7px 10px;
 }
 
